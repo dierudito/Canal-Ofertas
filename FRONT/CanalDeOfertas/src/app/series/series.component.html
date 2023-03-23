@@ -1,0 +1,7 @@
+<h1>Séries</h1>
+
+<div *ngFor="let serie of series">
+  <p><b>Valor esperado: </b> {{serie.ValorMaximo}} - {{serie.ValorMinimo}}</p>
+  <p><b>Variação da taxa: </b>{{serie.TaxaMaxima}}% - {{serie.TaxaMinima}}%</p>
+  <hr>
+</div>

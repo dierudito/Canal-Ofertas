@@ -1,0 +1,47 @@
+Um usuário administrador cadastrado no sistema, faz login então ele tem acesso a parte administrativa do site.
+Então clica na aba Casa de Investimentos e clica no botão para cadastrar uma nova casa.
+Então ele informa a Razão Social, CNPJ, Numero de Telefone, Endereço de Email, Dados Bancários - Banco, Agência, Conta, Tipo de Conta, Chave PIX.
+Então ele informa o CEP que tem vinculo com o Logradouro e o sistema preenche os dados automaticamente - Logradouro, Bairro, Município e UF.
+Então ele informa o número da logradouro e o complemento depois clica em adicionar
+Então o sistema retorna para a tela de listagem.
+
+Um usuário administrador logado no sistema
+Então clica na aba Investidores e clica no botão para cadastrar um novo investidor
+Então ele informa o tipo pessoa física
+Então ele informa o Nome, CPF, Numero de Telefone, Endereço de Email, Dados Bancários - Banco, Agência, Conta, Tipo de Conta, Chave PIX.
+Então ele informa o CEP único para a cidade e o sistema preenche os dados automaticamente - Município e UF.
+Então ele informa a Logradouro, Número da Logradouro, Complemento e o Bairro depois clica em adicionar
+Então o sistema retorna para a tela de listagem.
+
+Um usuário administrador cadastrado no sistema, faz login então ele tem acesso a parte administrativa do site.
+Então clica na aba Casa de Investimentos
+Então seleciona o primeiro registro
+Então clica em investidores
+Então seleciona o primeiro investidor da lista e clica no botão convidar
+Então o sistema abri uma popup com o campo de email preenchido
+Então o usuário clicar no botão enviar
+Então o sistema envia um email para o usuário com as informações de login e o sistema coloca o status de pendente para o acesso desse usuário.
+
+Um usuário administrador cadastrado no sistema, faz login
+Então ele cria no botão adicionar nova oferta
+Então ele seleciona o primeiro emissor no dropdown e seleciona o primeiro tipo da oferta
+Então ele tipo de disponibilidade Mercado e Credito
+Então seleciona o ICVM 476
+Então informa os dados principais da serie: Valor Máximo, Valor Mínimo, seleciona o primeiro indece, Taxa Mínima, Taxa Máxima, Variação BPS, tempo da série, seleciona a primeira unidade do tempo, seleciona a primera carencia, seleciona o primeiro tempo de juros e depois clica no botao adicionar
+Então seleciona o primeiro coordenador e o primeiro tipo de garantia e informa o valor
+Então clica no botão salvar
+
+Um usuário administrador cadastrado no sistema, faz login
+Então clica na primeira oferta de ICVM 746 não disponibilizada
+Então informa um apelido para a oferta
+Então informa o preço unitário para todas as series
+Então seleciona a primeira casa de investimento e depois clicar a vincular
+Então as datas de emissão e fechamento e a data de bookbuilding com data e hora
+Então seleciona a opção disponibilizar e clica no botão atualizar
+Então o sistema exibe a mensagem oferta disponbilizada com sucesso
+
+
+Um usuário padrão cadastrado no sistema, faz login então ele tem acesso a todas as ofertas de ICVM 400 e as ofertas de ICVM 476 ou ICVM 160 que estão vinculada a casa de investimento desse usuário.
+Então ele clica na primeira oferta em andamento listada
+Então ele seleciona uma série, uma taxa e a quantidade depois ele clica no botão para adicionar
+Então ele clica no botão Enviar Ordem e o sistema exibe uma mensagem de sucesso.
