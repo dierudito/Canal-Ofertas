@@ -26,9 +26,9 @@ namespace Moreno.CanalDeOfertas.Domain.Entities
             TipoChavePix = tipoChavePix;
             ChavePix = chavePix;
         }
-        public override bool EhValido()
+        public override async Task<bool> EhValidoAsync()
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

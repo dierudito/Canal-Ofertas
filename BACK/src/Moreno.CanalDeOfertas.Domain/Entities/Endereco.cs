@@ -1,4 +1,5 @@
 ﻿using Moreno.CanalDeOfertas.Domain.Entities.Base;
+using Moreno.CanalDeOfertas.Domain.Validations.Enderecos;
 
 namespace Moreno.CanalDeOfertas.Domain.Entities;
 
@@ -11,6 +12,7 @@ public class Endereco : Entity
     public string Municipio { get; private set; }
     public string Cep { get; private set; }
     public string Uf { get; private set; }
+    public Guid CasaInvestimentoId { get; private set; }
 
     public virtual CasaInvestimento CasaInvestimento { get; private set; }
 
@@ -19,12 +21,13 @@ public class Endereco : Entity
         
     }
 
-    public Endereco(string bairro, string municipio, string uf, string cep)
+    public Endereco(string bairro, string municipio, string uf, string cep, Guid casaInvestimentoId)
     {
         Bairro = bairro;
         Municipio = municipio;
         Uf = uf;
         Cep = cep;
+        CasaInvestimentoId = casaInvestimentoId;
     }
 
     public void DefinirLogradouro(string logradouro)
@@ -42,8 +45,9 @@ public class Endereco : Entity
         Complemento = complemento;
     }
 
-    public override bool EhValido()
+    public override async Task<bool> EhValidoAsync()
     {
-        return true;
+        ValidationResult = await new EnderecoEstaConsistenteValidation().ValidateAsync(this);
+        return ValidationResult.IsValid;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Moreno.CanalDeOfertas.Domain.Entities.Base;
+using Moreno.CanalDeOfertas.Domain.Validations.CasasInvestimento;
 
 namespace Moreno.CanalDeOfertas.Domain.Entities
 {
@@ -22,20 +23,27 @@ namespace Moreno.CanalDeOfertas.Domain.Entities
             Cnpj = cnpj;
             Email = email;
             Telefone = telefone;
-            ContaBancaria = contaBancaria;
             Enderecos = new List<Endereco>();
+            DefinirContaBancaria(contaBancaria).Wait();
         }
 
-        public void AdicionarEndereco(Endereco endereco)
+        private async Task DefinirContaBancaria(ContaBancaria contaBancaria)
         {
-            if (endereco.EhValido())
+            if(await contaBancaria.EhValidoAsync())
+                ContaBancaria = contaBancaria;
+        }
+
+        public async Task AdicionarEnderecoAsync(Endereco endereco)
+        {
+            if (await endereco.EhValidoAsync())
                 Enderecos.Add(endereco);
         }
 
 
-        public override bool EhValido()
+        public override async Task<bool> EhValidoAsync()
         {
-            throw new NotImplementedException();
+            ValidationResult = await new CasaInvestimentoEstaConsistenteValidation().ValidateAsync(this);
+            return ValidationResult.IsValid;
         }
     }
 }
